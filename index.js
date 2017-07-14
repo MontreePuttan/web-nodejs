@@ -10,12 +10,23 @@ var con = mysql.createConnection({
 });
 
 //connect DB
+// con.connect(function(err){
+// 	if(err) throw err;
+// 	console.log("Connected");
+// 	sql = "INSERT INTO `product` (`product_id`, `product_name`, `brand_id`, `product_price`, `product_image`) VALUES ('2', '2222', '2', '222', '22222');";
+// 	con.query(sql,function(err,result){
+// 		if(err) throw err;
+// 		console.log("Insert Complete");
+// 	});
+// });
+
+//show data
 con.connect(function(err){
 	if(err) throw err;
 	console.log("Connected");
-	sql = "INSERT INTO `product` (`product_id`, `product_name`, `brand_id`, `product_price`, `product_image`) VALUES ('2', '2222', '2', '222', '22222');";
+	sql = "SELECT * FROM `product`";
 	con.query(sql,function(err,result){
 		if(err) throw err;
-		console.log("Insert Complete");
+		console.log(result);
 	});
 });
