@@ -1,6 +1,11 @@
 var express = require('express');
+var body = require('body-parser');
 var app = express();
+
+app.use(body());
 app.set('view engine','ejs');
+
+
 
 app.get('/',function(req,res){
 	res.send('<h1>HelloWorld</h1>');
@@ -45,14 +50,29 @@ app.get('/database',function(req,res){
 });
 
 // method get
-app.get('/showForm',function(req,res){
-	res.sendFile(__dirname + "/" + "showForm.html");
+app.get('/showFormGet',function(req,res){
+	res.sendFile(__dirname + "/" + "showFormGet.html");
 });
 
-app.get('/showData',function(req,res){
+app.get('/showDataGet',function(req,res){
 	data = {
 		fname:req.query.fname,
 		lname:req.query.lname
+	};
+	console.log(data);
+	res.end(JSON.stringify(data));
+});
+
+
+// method post
+app.get('/showFormPost',function(req,res){
+	res.sendFile(__dirname + "/" + "showFormPost.html");
+});
+
+app.post('/showDataPost',function(req,res){
+	data = {
+		fname:req.body.fname,
+		lname:req.body.lname
 	};
 	console.log(data);
 	res.end(JSON.stringify(data));
