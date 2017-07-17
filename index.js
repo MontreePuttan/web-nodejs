@@ -9,7 +9,7 @@ var con = mysql.createConnection({
 	database: "web-nodejs"
 });
 
-//connect DB
+//connect DB and Insert
 // con.connect(function(err){
 // 	if(err) throw err;
 // 	console.log("Connected");
@@ -20,13 +20,26 @@ var con = mysql.createConnection({
 // 	});
 // });
 
+
 //show data
+// con.connect(function(err){
+// 	if(err) throw err;
+// 	console.log("Connected");
+// 	sql = "SELECT * FROM `product`";
+// 	con.query(sql,function(err,result){
+// 		if(err) throw err;
+// 		console.log(result);
+// 	});
+// });
+
+
+// delete  data
 con.connect(function(err){
 	if(err) throw err;
 	console.log("Connected");
-	sql = "SELECT * FROM `product`";
+	sql = "DELETE FROM product WHERE product_id='8'";
 	con.query(sql,function(err,result){
 		if(err) throw err;
-		console.log(result);
+		console.log("Delete Complete");
 	});
 });
