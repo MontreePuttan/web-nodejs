@@ -34,12 +34,24 @@ var con = mysql.createConnection({
 
 
 // delete  data
+// con.connect(function(err){
+// 	if(err) throw err;
+// 	console.log("Connected");
+// 	sql = "DELETE FROM product WHERE product_id='8'";
+// 	con.query(sql,function(err,result){
+// 		if(err) throw err;
+// 		console.log("Delete Complete");
+// 	});
+// });
+
+
+// update data
 con.connect(function(err){
 	if(err) throw err;
 	console.log("Connected");
-	sql = "DELETE FROM product WHERE product_id='8'";
+	sql = "UPDATE product SET product_name='keyboard' WHERE product_id='7'";
 	con.query(sql,function(err,result){
 		if(err) throw err;
-		console.log("Delete Complete");
+		console.log("Update Complete");
 	});
 });
