@@ -1,8 +1,10 @@
 var express = require('express');
+var cookie = require('cookie-parser');
 var body = require('body-parser');
 var app = express();
 
 app.use(body());
+app.use(cookie());
 app.set('view engine','ejs');
 
 
@@ -37,6 +39,7 @@ app.get('/template',function(req,res){
 });
 
 
+// show page
 app.get('/home',function(req,res){
 	res.render('home');
 });
@@ -76,6 +79,18 @@ app.post('/showDataPost',function(req,res){
 	};
 	console.log(data);
 	res.end(JSON.stringify(data));
+});
+
+
+// cookie
+app.get('/createCookie',function(req,res){
+	res.cookie('myCookie','montree');
+	res.end('Create Cookie');
+});
+
+app.get('/deleteCookie',function(req,res){
+	res.clearCookie('myCookie');
+	res.end('Delete Cookie');
 });
 
 
